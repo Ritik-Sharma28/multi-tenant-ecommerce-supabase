@@ -2,7 +2,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts"
 
 // This is the equivalent of app.post('/', async (req, res) => { ... })
-Deno.serve(async (req) => {
+Deno.serve(async (req : any) => {
   try {
     // 1. Get the payload sent by the PostgreSQL database webhook
     // (Equivalent to req.body in Express)
@@ -28,7 +28,7 @@ Deno.serve(async (req) => {
       { headers: { "Content-Type": "application/json" }, status: 200 },
     )
 
-  } catch (error) {
+  } catch (error:any) {
     // 4. Handle errors securely
     console.error("Webhook Error:", error.message)
     return new Response(
